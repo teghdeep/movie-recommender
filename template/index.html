@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Info</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  </head>
+  <style>
+  .example_e {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+.example_e:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+
+#</style>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">MovieInfo</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h3 class="text-center">Search For Any Movie</h3>
+        <form id="searchForm">
+          <input type="text" class="form-control" id="searchText" placeholder="Search Movie....">
+        </form>
+        <h3 class="text-center">Search For Any Series</h3>
+        <form id="searchFormSeries">
+          <input type="text" class="form-control" id="searchTextSeries" placeholder="Search Series....">
+        </form>
+        
+        <div class="button_cont" align="left" > 
+          <button class="example_e" id="searchtrending" type="button"> Today's Trending movies</button>
+        <button class="example_e" id="searchtrendingmovieweekly"> This Week Trending Movie </button></div>
+        
+         
+        
+
+      </div>
+    </div>
+
+    <div>
+      <div id="movies" class="row"></div>
+    </div>
+	<div class="login">
+	<h1>MOVIE SUGGESTIONS : </h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+    	<input type="text" name="Movie" placeholder="Movie" required="required" />
+        
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Suggest</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/axios.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/trend.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/trendmovieweekly.js')}}"></script> 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/seriessearch.js') }}"></script> 
+  </body>
+</html>
